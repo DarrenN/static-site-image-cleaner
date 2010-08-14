@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Test Index</title>
+	
+	<!-- Test a simple link element -->
+	<link rel="stylesheet" href="css/one.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/four.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<!-- Test an @import -->
+	<style type="text/css" media="screen">
+		@import url('css/two.css');
+		
+		span {
+			background: #fff url('img/g.png');
+		}
+	</style>
+	
+</head>
+
+<body>
+
+<div id="wrapper">
+	<h1>Test Index 1</h1>
+	
+	<div id="abc">
+		<img src="img/a.png" width="200" height="200" alt="A" />
+		<img src="img/b.png" width="200" height="200" alt="B" />
+		<img src="img/c.png" width="200" height="200" alt="C" />
+	</div>
+
+	<div id="def">
+		<div id="d" class="box">&nbsp;</div>
+		<div id="e" class="box">&nbsp;</div>
+		<div id="f" class="box">&nbsp;</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div id="g">
+		<div class="box">
+			<p>G does not live here</p>			
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+</div>
+
+
+</body>
+</html>

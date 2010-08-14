@@ -1,0 +1,28 @@
+@import url('three.css');
+
+#def {
+	padding: 10px 90px;
+	text-align: center;
+}
+
+.box {
+	float: left;
+	background-color: #eee;
+	display: block;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+}
+
+#d {
+	background: transparent url('../img/d.png');
+}
+
+#e {
+	background: transparent url('../img/e.png');
+}
+
+#f {
+	background: transparent url('../img/f.png');
+}
+
