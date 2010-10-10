@@ -5,6 +5,7 @@
 require 'rubygems'
 require 'nokogiri'
 require 'css_parser'
+require 'optparse'
 
 include CssParser
 
@@ -13,12 +14,51 @@ files_html      = Array.new
 files_image     = Array.new
 images_used     = Array.new
 
+# This hash will hold all of the options
+# parsed from the command-line by
+# OptionParser.
+options = {}
+
+optparse = OptionParser.new do|opts|
+ # TODO: Put command-line options here
+ options[:dir] = ""
+  opts.on( '-d', '--dir DIRECTORY', "Mandatory argument" ) do|d|
+    options[:dir] = d
+  end
+  
+  options[:img] = ""
+    opts.on( '-i', '--img IMAGE DIRECTORY', "Mandatory argument" ) do|i|
+      options[:img] = i
+    end
+ 
+ # This displays the help screen, all programs are
+ # assumed to have this option.
+ opts.on( '-h', '--help', 'Display this screen' ) do
+   puts opts
+   exit
+ end
+end
+
+# Parse the command-line. Remember there are two forms
+# of the parse method. The 'parse' method simply parses
+# ARGV, while the 'parse!' method parses ARGV and removes
+# any options found there, as well as any parameters for
+# the options. What's left is the list of files to resize.
+optparse.parse!
+
+# If no -file is set then grab a list
+
+if options[:dir].empty?
+ Dir.chdir('www')
+else
+ Dir.chdir(options[:dir])
+end
 
 # 
 # Get HTML files
 #
-Dir.chdir('www')
-files_html = Dir.glob('*.html')
+# Dir.chdir('www')
+ files_html = Dir.glob('*.html')
 
 #
 # Rip through HTML with Nokogiri and load up
@@ -79,12 +119,19 @@ files_css.each do |css|
   
 end
 
-images_used.uniq!.sort!
+images_used = images_used.uniq
+images_used = images_used.sort
 
 #
 # Get IMG files
 #
-Dir.chdir('img')
+
+if options[:img].empty?
+ Dir.chdir('img')
+else
+ Dir.chdir(options[:img])
+end
+
 files_image = Dir.glob('*')
 
 # Strip out image directory

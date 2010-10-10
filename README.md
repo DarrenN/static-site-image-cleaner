@@ -5,6 +5,18 @@ A quick script that uses [Nokogiri](http://nokogiri.org/) and my own fork of the
 
 Still very much beta.
 
+To-Use:
+-------
+
+-d Directory you want to check (default is `www`)
+-i Directory where your images are stored (default is `img`)
+
+ex: `ruby cleaner.rb -d WWW -i img`
+
+or if you make it executable and drop in your `bin`:
+
+`cleaner -d WWW -i img`
+
 To test:
 --------
 
@@ -15,5 +27,4 @@ That will run through the `www` directory in the package and remove any images n
 To-do's
 -------
 
-* Take args from the command line to point to directories
 * Write proper tests
